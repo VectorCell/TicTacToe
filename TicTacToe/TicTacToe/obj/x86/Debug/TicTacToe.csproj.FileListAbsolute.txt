@@ -1,0 +1,7 @@
+d:\brandon\documents\visual studio 2013\Projects\TicTacToe\TicTacToe\TicTacToe\bin\x86\Debug\TicTacToe.exe
+d:\brandon\documents\visual studio 2013\Projects\TicTacToe\TicTacToe\TicTacToe\bin\x86\Debug\TicTacToe.pdb
+d:\brandon\documents\visual studio 2013\Projects\TicTacToe\TicTacToe\TicTacToe\obj\x86\Debug\TicTacToe.csprojResolveAssemblyReference.cache
+d:\brandon\documents\visual studio 2013\Projects\TicTacToe\TicTacToe\TicTacToe\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+d:\brandon\documents\visual studio 2013\Projects\TicTacToe\TicTacToe\TicTacToe\obj\x86\Debug\TicTacToe.exe
+d:\brandon\documents\visual studio 2013\Projects\TicTacToe\TicTacToe\TicTacToe\obj\x86\Debug\TicTacToe.pdb
+d:\brandon\documents\visual studio 2013\Projects\TicTacToe\TicTacToe\TicTacToe\bin\x86\Debug\Content\lock.xnb

@@ -19,10 +19,18 @@ namespace TicTacToe
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        // sprite drawing support
+        Texture2D cursor;
+        Rectangle cursorRect;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            // preferred resolution
+            graphics.PreferredBackBufferWidth = 1280;
+            graphics.PreferredBackBufferHeight = 720;
         }
 
         /// <summary>
@@ -48,6 +56,8 @@ namespace TicTacToe
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            cursor = Content.Load<Texture2D>("lock");
+            cursorRect = new Rectangle(100, 100, cursor.Width, cursor.Height);
         }
 
         /// <summary>

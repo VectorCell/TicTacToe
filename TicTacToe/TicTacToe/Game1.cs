@@ -20,8 +20,12 @@ namespace TicTacToe
         SpriteBatch spriteBatch;
 
         // sprite drawing support
-        Texture2D cursor;
-        Rectangle cursorRect;
+        LinkedList<GameObject> objects;
+
+        KeyboardState currentKey;
+        KeyboardState lastKey;
+        MouseState currentMouse;
+        MouseState lastMouse;
 
         public Game1()
         {
@@ -29,8 +33,9 @@ namespace TicTacToe
             Content.RootDirectory = "Content";
 
             // preferred resolution
-            graphics.PreferredBackBufferWidth = 1280;
-            graphics.PreferredBackBufferHeight = 720;
+            graphics.PreferredBackBufferWidth = 1280; // GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            graphics.PreferredBackBufferHeight = 720; // GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+            graphics.IsFullScreen = false;
         }
 
         /// <summary>
@@ -42,6 +47,7 @@ namespace TicTacToe
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            objects = new LinkedList<GameObject>();
 
             base.Initialize();
         }
@@ -56,8 +62,8 @@ namespace TicTacToe
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            cursor = Content.Load<Texture2D>("lock");
-            cursorRect = new Rectangle(100, 100, cursor.Width, cursor.Height);
+            GameCursor cursor = new GameCursor(this);
+            objects.AddLast(cursor);
         }
 
         /// <summary>
@@ -76,11 +82,24 @@ namespace TicTacToe
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            lastKey = currentKey;
+            currentKey = Keyboard.GetState();
+            lastMouse = currentMouse;
+            currentMouse = Mouse.GetState();
+
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
             // TODO: Add your update logic here
+            foreach (GameObject obj in objects)
+            {
+                if (obj is GameCursor)
+                    ((GameCursor)obj).Update(lastMouse, currentMouse);
+                else
+                    obj.Update();
+            }
+            // cursor.Update(lastMouse, currentMouse);
 
             base.Update(gameTime);
         }
@@ -94,6 +113,12 @@ namespace TicTacToe
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            spriteBatch.Begin();
+            foreach (GameObject obj in objects)
+            {
+                obj.Draw(spriteBatch);
+            }
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }

@@ -5,3 +5,5 @@ d:\brandon\documents\visual studio 2013\Projects\TicTacToe\TicTacToe\TicTacToe\o
 d:\brandon\documents\visual studio 2013\Projects\TicTacToe\TicTacToe\TicTacToe\obj\x86\Debug\TicTacToe.exe
 d:\brandon\documents\visual studio 2013\Projects\TicTacToe\TicTacToe\TicTacToe\obj\x86\Debug\TicTacToe.pdb
 d:\brandon\documents\visual studio 2013\Projects\TicTacToe\TicTacToe\TicTacToe\bin\x86\Debug\Content\lock.xnb
+d:\brandon\documents\visual studio 2013\Projects\TicTacToe\TicTacToe\TicTacToe\bin\x86\Debug\Content\cursor.xnb
+d:\brandon\documents\visual studio 2013\Projects\TicTacToe\TicTacToe\TicTacToe\bin\x86\Debug\Content\blank.xnb

@@ -10,11 +10,29 @@
       <Output>d:\brandon\documents\visual studio 2013\Projects\TicTacToe\TicTacToe\TicTacToe\bin\x86\Debug\Content\lock.xnb</Output>
       <Time>2013-11-20T23:58:01.0502193-06:00</Time>
     </Item>
+    <Item>
+      <Source>cursor.png</Source>
+      <Name>cursor</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\brandon\documents\visual studio 2013\Projects\TicTacToe\TicTacToe\TicTacToe\bin\x86\Debug\Content\cursor.xnb</Output>
+      <Time>2014-03-09T14:51:27.1659476-05:00</Time>
+    </Item>
+    <Item>
+      <Source>blank.png</Source>
+      <Name>blank</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\brandon\documents\visual studio 2013\Projects\TicTacToe\TicTacToe\TicTacToe\bin\x86\Debug\Content\blank.xnb</Output>
+      <Time>2014-03-09T15:21:34.7323345-05:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{C30D8A54-5BE8-439D-9965-CA85BC14AF52}</ContentProjectGUID>
       <TargetPlatform>Windows</TargetPlatform>
-      <TargetProfile>HiDef</TargetProfile>
+      <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
       <RootDirectory>d:\brandon\documents\visual studio 2013\Projects\TicTacToe\TicTacToe\TicTacToeContent\</RootDirectory>

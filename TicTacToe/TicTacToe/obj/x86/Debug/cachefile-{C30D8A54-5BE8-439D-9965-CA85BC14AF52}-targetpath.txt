@@ -1,1 +1,3 @@
 Content\lock.xnb
+Content\cursor.xnb
+Content\blank.xnb

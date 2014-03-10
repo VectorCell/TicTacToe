@@ -46,5 +46,11 @@ namespace TicTacToe
                 numClicks++;
             }
         }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            if (!game.IsMouseVisible)
+                base.Draw(spriteBatch);
+        }
     }
 }

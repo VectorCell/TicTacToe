@@ -19,6 +19,8 @@ namespace TicTacToe
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        Texture2D background;
+
         // sprite drawing support
         LinkedList<GameObject> objects;
 
@@ -36,7 +38,14 @@ namespace TicTacToe
             graphics.PreferredBackBufferWidth = 1280; // GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
             graphics.PreferredBackBufferHeight = 720; // GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
             graphics.IsFullScreen = false;
-            // this.IsMouseVisible = true;
+            this.IsMouseVisible = false;
+            this.Window.AllowUserResizing = true;
+            this.Window.ClientSizeChanged += new EventHandler<EventArgs>(Window_ClientSizeChanged);
+        }
+
+        private void Window_ClientSizeChanged(object sender, EventArgs e)
+        {
+            // this.IsMouseVisible = !this.IsMouseVisible;
         }
 
         public GraphicsDeviceManager GetGraphics()
@@ -72,12 +81,19 @@ namespace TicTacToe
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            background = Content.Load<Texture2D>("starfield1");
+
             GameGrid grid = new GameGrid(this);
             objects.AddLast(grid);
 
             // TODO: use this.Content to load your game content here
             GameCursor cursor = new GameCursor(this);
             objects.AddLast(cursor);
+
+            foreach (GameObject obj in objects)
+            {
+                obj.LoadContent();
+            }
         }
 
         /// <summary>
@@ -110,6 +126,8 @@ namespace TicTacToe
             {
                 if (obj is GameCursor)
                     ((GameCursor)obj).Update(lastMouse, currentMouse);
+                else if (obj is GameGrid)
+                    ((GameGrid)obj).Update(lastMouse, currentMouse);
                 else
                     obj.Update();
             }
@@ -128,10 +146,14 @@ namespace TicTacToe
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
+
+            spriteBatch.Draw(background, this.GraphicsDevice.Viewport.Bounds, Color.White);
+
             foreach (GameObject obj in objects)
             {
                 obj.Draw(spriteBatch);
             }
+
             spriteBatch.End();
 
             base.Draw(gameTime);

@@ -14,20 +14,20 @@ namespace TicTacToe.Util
 {
     public class SolidColorTexture : Texture2D
     {
-        private Color _color;
+        private Color color;
         // Gets or sets the color used to create the texture
-        public Color Color
-        {
-            get { return _color; }
-            set
-            {
-                if (value != _color)
-                {
-                    _color = value;
-                    SetData<Color>(new Color[] { _color });
-                }
-            }
-        }
+        //public Color Color
+        //{
+        //    get { return _color; }
+        //    set
+        //    {
+        //        if (value != _color)
+        //        {
+        //            _color = value;
+        //            SetData<Color>(new Color[] { _color });
+        //        }
+        //    }
+        //}
 
         public SolidColorTexture(Game1 game)
             : base(game.GraphicsDevice, 1, 1)
@@ -38,13 +38,15 @@ namespace TicTacToe.Util
         public SolidColorTexture(Game1 game, Color color)
             : base(game.GraphicsDevice, 1, 1)
         {
-            Color = color;
+            this.color = color;
+            this.SetData<Color>(new Color[] { color });
         }
 
         public SolidColorTexture(Game1 game, Color color, int width, int height)
             : base(game.GraphicsDevice, width, height)
         {
-            Color = color;
+            this.color = color;
+            this.SetData<Color>(new Color[] { color });
         }
 
     }

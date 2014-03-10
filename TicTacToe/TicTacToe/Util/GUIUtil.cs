@@ -21,5 +21,26 @@ namespace TicTacToe.Util
                 new Vector2(Vector2.Distance(start, end), 1.0f),
                 SpriteEffects.None, 0.0f);
         }
+
+        public static void DrawThickLine(this SpriteBatch spriteBatch, Game1 game, Vector2 start, Vector2 end, Color color, float width)
+        {
+            Texture2D texture = new SolidColorTexture(game, color, 1, 1);
+            spriteBatch.DrawLine(texture, start, end);
+        }
+
+        /// <summary>
+        /// Returns a Rectangle of the same dimensions as rect, centered at context.
+        /// Assumes that rect is smaller than context
+        /// </summary>
+        /// <param name="rect"></param>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        public static Rectangle Center(Rectangle rect, Rectangle context)
+        {
+            return new Rectangle(
+                (context.X + context.Width / 2) - (rect.Width / 2), 
+                (context.Y + context.Height / 2) - (rect.Height / 2), 
+                rect.Width, rect.Height);
+        }
     }
 }

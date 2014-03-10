@@ -28,6 +28,24 @@
       <Output>d:\brandon\documents\visual studio 2013\Projects\TicTacToe\TicTacToe\TicTacToe\bin\x86\Debug\Content\blank.xnb</Output>
       <Time>2014-03-09T15:21:34.7323345-05:00</Time>
     </Item>
+    <Item>
+      <Source>starfield1.jpg</Source>
+      <Name>starfield1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\brandon\documents\visual studio 2013\Projects\TicTacToe\TicTacToe\TicTacToe\bin\x86\Debug\Content\starfield1.xnb</Output>
+      <Time>2014-03-10T07:37:22.4330715-05:00</Time>
+    </Item>
+    <Item>
+      <Source>winner.png</Source>
+      <Name>winner</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\brandon\documents\visual studio 2013\Projects\TicTacToe\TicTacToe\TicTacToe\bin\x86\Debug\Content\winner.xnb</Output>
+      <Time>2014-03-10T08:48:31.7689-05:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{C30D8A54-5BE8-439D-9965-CA85BC14AF52}</ContentProjectGUID>

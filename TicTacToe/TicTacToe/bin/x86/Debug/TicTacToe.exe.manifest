@@ -68,14 +68,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TicTacToe.exe" size="15360">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TicTacToe.exe" size="18944">
       <assemblyIdentity name="TicTacToe" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>v3/7R8nrecABhHwI63uJVeYzvVc=</dsig:DigestValue>
+        <dsig:DigestValue>Teqasr2i8J8UBdPUeNE2431U85s=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -104,6 +104,24 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>/Xubabk+CzCTOXcS5Y9qg867GL0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\starfield1.xnb" size="10739899">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>ceJ1R5BpZH7CsZvzVja0S/6xKFw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\winner.xnb" size="921787">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>EpoIWllLH3pcZldg6nUE34NaN8w=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Game.ico" size="4286">

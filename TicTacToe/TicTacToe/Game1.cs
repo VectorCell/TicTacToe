@@ -36,6 +36,12 @@ namespace TicTacToe
             graphics.PreferredBackBufferWidth = 1280; // GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
             graphics.PreferredBackBufferHeight = 720; // GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
             graphics.IsFullScreen = false;
+            // this.IsMouseVisible = true;
+        }
+
+        public GraphicsDeviceManager GetGraphics()
+        {
+            return graphics;
         }
 
         /// <summary>
@@ -49,6 +55,11 @@ namespace TicTacToe
             // TODO: Add your initialization logic here
             objects = new LinkedList<GameObject>();
 
+            foreach (GameObject obj in objects)
+            {
+                obj.Initialize();
+            }
+
             base.Initialize();
         }
 
@@ -60,6 +71,9 @@ namespace TicTacToe
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            GameGrid grid = new GameGrid(this);
+            objects.AddLast(grid);
 
             // TODO: use this.Content to load your game content here
             GameCursor cursor = new GameCursor(this);

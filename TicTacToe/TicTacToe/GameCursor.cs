@@ -44,11 +44,6 @@ namespace TicTacToe
             if (lastMouse.LeftButton == ButtonState.Released && currentMouse.LeftButton == ButtonState.Pressed)
             {
                 numClicks++;
-
-                if (this.color != Color.Black)
-                    this.color = Color.Black;
-                else
-                    this.color = Color.White;
             }
         }
     }

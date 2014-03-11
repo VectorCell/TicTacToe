@@ -71,5 +71,10 @@ namespace TicTacToe
         {
 
         }
+
+        public virtual void Update(MouseState lastMouse, MouseState currentMouse)
+        {
+            
+        }
     }
 }

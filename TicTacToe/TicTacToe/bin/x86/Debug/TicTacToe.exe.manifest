@@ -68,14 +68,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TicTacToe.exe" size="23552">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TicTacToe.exe" size="24064">
       <assemblyIdentity name="TicTacToe" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>2N+7qW4Ttaoo2dakT9lcr/Zw6Bc=</dsig:DigestValue>
+        <dsig:DigestValue>cJbjhSIpzQYoRg+6u9J1PxWELFw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -121,16 +121,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>Fy0AFR097YDIPkvl/ZT9/8uZlzw=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Content\winner.xnb" size="921787">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>EpoIWllLH3pcZldg6nUE34NaN8w=</dsig:DigestValue>
+      <dsig:DigestValue>7JnMv5zeXqQoHm1PWSMRPmOCXfw=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Game.ico" size="4286">

@@ -28,7 +28,7 @@ namespace TicTacToe
         MouseState currentMouse;
         MouseState lastMouse;
 
-        private static readonly bool FULLSCREEN = false;
+        private static readonly bool FULLSCREEN = true;
 
         public Game1()
         {
@@ -41,7 +41,7 @@ namespace TicTacToe
                 graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
                 graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
                 graphics.IsFullScreen = true;
-                this.IsMouseVisible = false;
+                this.IsMouseVisible = true;
                 this.Window.AllowUserResizing = false;
             }
             else
@@ -139,12 +139,8 @@ namespace TicTacToe
             // TODO: Add your update logic here
             foreach (GameObject obj in objects)
             {
-                if (obj is GameCursor)
-                    ((GameCursor)obj).Update(lastMouse, currentMouse);
-                else if (obj is GameGrid)
-                    ((GameGrid)obj).Update(lastMouse, currentMouse);
-                else
-                    obj.Update();
+                obj.Update();
+                obj.Update(lastMouse, currentMouse);
             }
             // cursor.Update(lastMouse, currentMouse);
 
@@ -168,7 +164,10 @@ namespace TicTacToe
             }
 
             float frameRate = 1 / (float)gameTime.ElapsedGameTime.TotalSeconds;
-            spriteBatch.DrawString(font, "FPS: " + frameRate, new Vector2(5, this.GraphicsDevice.Viewport.Bounds.Height - 42), Color.White);
+            spriteBatch.DrawString(font, 
+                "FPS: " + Math.Round(frameRate, 1), 
+                new Vector2(5, this.GraphicsDevice.Viewport.Bounds.Height - 42), 
+                Color.White * 0.5f);
 
             spriteBatch.End();
 

@@ -22,12 +22,14 @@ namespace TicTacToe
 
         Vector3[] points;
         float speed;
+        float baseSpeed;
 
         public GameBackground(Game1 game) : base(game)
         {
             r = new Random();
-            points = new Vector3[5000];
-            speed = 0.01f;
+            points = new Vector3[2500];
+            speed = 0.005f;
+            baseSpeed = speed;
         }
 
         public override void LoadContent()
@@ -49,18 +51,40 @@ namespace TicTacToe
         {
             base.Update();
             drawRect = game.GraphicsDevice.Viewport.Bounds;
+        }
+
+        public override void Update(MouseState lastMouse, MouseState currentMouse)
+        {
+            int x = currentMouse.X;
+            int y = currentMouse.Y;
+            float percentX = (float)x / drawRect.Width;
+            float percentY = (float)y / drawRect.Height;
+
+            if (currentMouse.RightButton == ButtonState.Pressed)
+            {
+                if (speed < 0.05f)
+                    speed *= 1.01f;
+            }
+            else if (speed > baseSpeed)
+            {
+                speed *= 0.9f;
+            }
+            else
+            {
+                speed = baseSpeed;
+            }
 
             for (int k = 0; k < points.Length; k++)
             {
                 Vector3 v = points[k];
                 if (v.X > 0 && v.X < 1 && v.Y > 0 && v.Y < 1)
                 {
-                    v.X -= 0.5f;
+                    v.X -= percentX;
                     v.X *= 1 + speed * v.Z;
-                    v.X += 0.5f;
-                    v.Y -= 0.5f;
+                    v.X += percentX;
+                    v.Y -= percentY;
                     v.Y *= 1 + speed * v.Z;
-                    v.Y += 0.5f;
+                    v.Y += percentY;
                     v.Z += speed;
                     points[k] = v;
                 }

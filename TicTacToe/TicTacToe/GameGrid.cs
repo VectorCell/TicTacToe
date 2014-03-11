@@ -20,8 +20,6 @@ namespace TicTacToe
 
         private Rectangle viewportBounds;
 
-        private Texture2D winnerImage;
-
         SpriteFont font;
 
         private int size; // square
@@ -59,7 +57,6 @@ namespace TicTacToe
 
         public override void LoadContent()
         {
-            winnerImage = game.Content.Load<Texture2D>("winner");
             font = game.Content.Load<SpriteFont>("UI");
         }
 
@@ -360,10 +357,8 @@ namespace TicTacToe
             offsetX = viewportBounds.Width / 2 - size / 2;
         }
 
-        public void Update(MouseState lastMouse, MouseState currentMouse)
+        public override void Update(MouseState lastMouse, MouseState currentMouse)
         {
-            this.Update();
-
             // player's turn
             if (lastMouse.LeftButton == ButtonState.Released && currentMouse.LeftButton == ButtonState.Pressed)
             {
@@ -446,7 +441,7 @@ namespace TicTacToe
         public override void Draw(SpriteBatch spriteBatch)
         {
             // lines
-            Color lineColor = Color.White * 0.25f;
+            Color lineColor = new Color(48, 48, 48); // Color.White * 0.25f;
             spriteBatch.Draw(White, TransformRect(11, 2, 1, 29), lineColor);
             spriteBatch.Draw(White, TransformRect(21, 2, 1, 29), lineColor);
             spriteBatch.Draw(White, TransformRect(2, 11, 29, 1), lineColor);
@@ -472,15 +467,27 @@ namespace TicTacToe
             if (showWin)
             {
                 if (winner != TIE)
-                    spriteBatch.Draw(winnerImage, GUIUtil.Center(winnerImage.Bounds, viewportBounds), Color.White);
+                    spriteBatch.DrawString(font,
+                        winner == PLAYER_X ? "Blue Wins" : "Red Wins",
+                        new Vector2(10, 10),
+                        winner == PLAYER_X ? Color.Blue : Color.Red);
+                else
+                    spriteBatch.DrawString(font,
+                        "Tie!",
+                        new Vector2(10, 10),
+                        Color.White);
+            }
+            else
+            {
+                spriteBatch.DrawString(font,
+                    turn == PLAYER_X ? "Blue's Turn" : "Red's Turn",
+                    new Vector2(10, 10),
+                    turn == PLAYER_X ? Color.Blue : Color.Red);
             }
 
             // spriteBatch.Draw(new SolidColorTexture(this.game, Color.Cyan), new Rectangle(500, 100, 100, 100), Color.White);
 
-            spriteBatch.DrawString(font, 
-                turn == PLAYER_X ? "Blue's Turn" : "Red's Turn", 
-                new Vector2(10, 10), 
-                (turn == PLAYER_X ? Color.Blue * 1.5f : Color.Red * 1.5f));
+            
         }
     }
 }

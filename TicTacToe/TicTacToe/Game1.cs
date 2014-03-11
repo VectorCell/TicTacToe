@@ -18,8 +18,7 @@ namespace TicTacToe
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
-        Texture2D background;
+        SpriteFont font;
 
         // sprite drawing support
         LinkedList<GameObject> objects;
@@ -29,18 +28,31 @@ namespace TicTacToe
         MouseState currentMouse;
         MouseState lastMouse;
 
+        private static readonly bool FULLSCREEN = false;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
             // preferred resolution
-            graphics.PreferredBackBufferWidth = 1280; // GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-            graphics.PreferredBackBufferHeight = 720; // GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
-            graphics.IsFullScreen = false;
-            this.IsMouseVisible = false;
-            this.Window.AllowUserResizing = true;
-            this.Window.ClientSizeChanged += new EventHandler<EventArgs>(Window_ClientSizeChanged);
+            if (FULLSCREEN)
+            {
+                graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+                graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+                graphics.IsFullScreen = true;
+                this.IsMouseVisible = false;
+                this.Window.AllowUserResizing = false;
+            }
+            else
+            {
+                graphics.PreferredBackBufferWidth = 1280;
+                graphics.PreferredBackBufferHeight = 720;
+                graphics.IsFullScreen = false;
+                this.IsMouseVisible = true;
+                this.Window.AllowUserResizing = true;
+                this.Window.ClientSizeChanged += new EventHandler<EventArgs>(Window_ClientSizeChanged);
+            }
         }
 
         private void Window_ClientSizeChanged(object sender, EventArgs e)
@@ -81,7 +93,10 @@ namespace TicTacToe
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            background = Content.Load<Texture2D>("starfield1");
+            font = Content.Load<SpriteFont>("UI");
+
+            GameBackground bg = new GameBackground(this);
+            objects.AddLast(bg);
 
             GameGrid grid = new GameGrid(this);
             objects.AddLast(grid);
@@ -147,12 +162,13 @@ namespace TicTacToe
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
-            spriteBatch.Draw(background, this.GraphicsDevice.Viewport.Bounds, Color.White);
-
             foreach (GameObject obj in objects)
             {
                 obj.Draw(spriteBatch);
             }
+
+            float frameRate = 1 / (float)gameTime.ElapsedGameTime.TotalSeconds;
+            spriteBatch.DrawString(font, "FPS: " + frameRate, new Vector2(5, this.GraphicsDevice.Viewport.Bounds.Height - 42), Color.White);
 
             spriteBatch.End();
 

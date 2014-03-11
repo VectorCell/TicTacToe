@@ -86,9 +86,11 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameBackground.cs" />
     <Compile Include="GameButton.cs" />
     <Compile Include="GameCursor.cs" />
     <Compile Include="GameGrid.cs" />
+    <Compile Include="GameGridUtil\MatchLocation.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="GameObjectSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

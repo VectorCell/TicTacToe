@@ -46,6 +46,15 @@
       <Output>d:\brandon\documents\visual studio 2013\Projects\TicTacToe\TicTacToe\TicTacToe\bin\x86\Debug\Content\winner.xnb</Output>
       <Time>2014-03-10T08:48:31.7689-05:00</Time>
     </Item>
+    <Item>
+      <Source>UI.spritefont</Source>
+      <Name>UI</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\brandon\documents\visual studio 2013\Projects\TicTacToe\TicTacToe\TicTacToe\bin\x86\Debug\Content\UI.xnb</Output>
+      <Time>2014-03-11T03:51:08.9052087-05:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{C30D8A54-5BE8-439D-9965-CA85BC14AF52}</ContentProjectGUID>

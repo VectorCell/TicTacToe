@@ -68,14 +68,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TicTacToe.exe" size="18944">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TicTacToe.exe" size="23552">
       <assemblyIdentity name="TicTacToe" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Teqasr2i8J8UBdPUeNE2431U85s=</dsig:DigestValue>
+        <dsig:DigestValue>2N+7qW4Ttaoo2dakT9lcr/Zw6Bc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -113,6 +113,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>ceJ1R5BpZH7CsZvzVja0S/6xKFw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\UI.xnb" size="70830">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>Fy0AFR097YDIPkvl/ZT9/8uZlzw=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\winner.xnb" size="921787">

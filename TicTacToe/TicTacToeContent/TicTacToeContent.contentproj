@@ -51,13 +51,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="starfield1.jpg">
-      <Name>starfield1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="UI.spritefont">
       <Name>UI</Name>
       <Importer>FontDescriptionImporter</Importer>

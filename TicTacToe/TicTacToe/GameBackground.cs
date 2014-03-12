@@ -40,11 +40,11 @@ namespace TicTacToe
 
             for (int k = 0; k < points.Length; k++)
             {
-                points[k] = new Vector4((float)r.NextDouble(), (float)r.NextDouble(), (float)r.NextDouble(), (float)r.NextDouble());
+                points[k] = new Vector4((float)r.NextDouble(), (float)r.NextDouble(), (float)r.NextDouble(), 1.0f);
             }
 
-            texture = game.Content.Load<Texture2D>("starfield1");
-            color = new Color(0, 0, 0);
+            texture = new SolidColorTexture(game, Color.Black);
+            color = Color.White;
         }
 
         public override void Update()
@@ -91,7 +91,7 @@ namespace TicTacToe
                 }
                 else
                 {
-                    points[k] = new Vector4((float)r.NextDouble(), (float)r.NextDouble(), (float)(r.NextDouble() / 32), (float)r.NextDouble());
+                    points[k] = new Vector4((float)r.NextDouble(), (float)r.NextDouble(), (float)(r.NextDouble() / 32), 1.0f);
                 }
             }
         }

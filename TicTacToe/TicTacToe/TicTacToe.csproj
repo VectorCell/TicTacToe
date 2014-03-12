@@ -98,6 +98,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="Util\GUIUtil.cs" />
     <Compile Include="Util\SolidColorTexture.cs" />
+    <Compile Include="Util\TicTacToeUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

@@ -12,7 +12,8 @@ namespace TicTacToe
         {
             using (Game1 game = new Game1())
             {
-                game.Run();
+                // game.Run();
+                TicTacToe.Util.TicTacToeUtil.Test();
             }
         }
     }

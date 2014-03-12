@@ -8,7 +8,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Brandon\Programs\TicTacToe\TicTacToe\TicTacToe\bin\x86\Debug\Content\lock.xnb</Output>
-      <Time>2014-03-11T06:58:46.5811819-05:00</Time>
+      <Time>2014-03-12T14:36:44.1647334-05:00</Time>
     </Item>
     <Item>
       <Source>blank.png</Source>
@@ -17,7 +17,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Brandon\Programs\TicTacToe\TicTacToe\TicTacToe\bin\x86\Debug\Content\blank.xnb</Output>
-      <Time>2014-03-11T06:58:46.5811819-05:00</Time>
+      <Time>2014-03-12T14:36:44.1627333-05:00</Time>
     </Item>
     <Item>
       <Source>cursor.png</Source>
@@ -26,16 +26,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Brandon\Programs\TicTacToe\TicTacToe\TicTacToe\bin\x86\Debug\Content\cursor.xnb</Output>
-      <Time>2014-03-11T06:58:46.5811819-05:00</Time>
-    </Item>
-    <Item>
-      <Source>starfield1.jpg</Source>
-      <Name>starfield1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Brandon\Programs\TicTacToe\TicTacToe\TicTacToe\bin\x86\Debug\Content\starfield1.xnb</Output>
-      <Time>2014-03-11T06:58:46.596818-05:00</Time>
+      <Time>2014-03-12T14:36:44.1637333-05:00</Time>
     </Item>
     <Item>
       <Source>UI.spritefont</Source>
@@ -44,7 +35,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Brandon\Programs\TicTacToe\TicTacToe\TicTacToe\bin\x86\Debug\Content\UI.xnb</Output>
-      <Time>2014-03-11T06:58:46.5811819-05:00</Time>
+      <Time>2014-03-12T14:36:44.1607332-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -61,31 +52,31 @@
     <Assemblies>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
-        <Value>2011-09-01T17:22:30-05:00</Value>
+        <Value>2011-09-01T16:22:30-05:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
-        <Value>2011-09-01T17:22:30-05:00</Value>
+        <Value>2011-09-01T16:22:30-05:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
-        <Value>2011-09-01T17:22:30-05:00</Value>
+        <Value>2011-09-01T16:22:30-05:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
-        <Value>2011-09-01T17:22:30-05:00</Value>
+        <Value>2011-09-01T16:22:30-05:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
-        <Value>2011-09-01T17:22:30-05:00</Value>
+        <Value>2011-09-01T16:22:30-05:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
-        <Value>2011-09-01T17:22:30-05:00</Value>
+        <Value>2011-09-01T16:22:30-05:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\WINDOWS\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2014-03-09T00:27:06.2309856-06:00</Value>
+        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2014-03-09T04:57:56.3337231-05:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

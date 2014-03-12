@@ -17,7 +17,6 @@ d:\brandon\documents\visual studio 2013\Projects\TicTacToe\TicTacToe\TicTacToe\b
 C:\Users\Brandon\Programs\TicTacToe\TicTacToe\TicTacToe\bin\x86\Debug\Content\lock.xnb
 C:\Users\Brandon\Programs\TicTacToe\TicTacToe\TicTacToe\bin\x86\Debug\Content\blank.xnb
 C:\Users\Brandon\Programs\TicTacToe\TicTacToe\TicTacToe\bin\x86\Debug\Content\cursor.xnb
-C:\Users\Brandon\Programs\TicTacToe\TicTacToe\TicTacToe\bin\x86\Debug\Content\starfield1.xnb
 C:\Users\Brandon\Programs\TicTacToe\TicTacToe\TicTacToe\bin\x86\Debug\Content\UI.xnb
 C:\Users\Brandon\Programs\TicTacToe\TicTacToe\TicTacToe\bin\x86\Debug\TicTacToe.exe.manifest
 C:\Users\Brandon\Programs\TicTacToe\TicTacToe\TicTacToe\bin\x86\Debug\TicTacToe.application

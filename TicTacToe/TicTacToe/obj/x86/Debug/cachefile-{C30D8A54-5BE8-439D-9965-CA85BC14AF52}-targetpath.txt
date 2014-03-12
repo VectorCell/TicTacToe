@@ -1,5 +1,4 @@
 Content\lock.xnb
 Content\blank.xnb
 Content\cursor.xnb
-Content\starfield1.xnb
 Content\UI.xnb

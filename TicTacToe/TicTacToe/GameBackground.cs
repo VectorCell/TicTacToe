@@ -20,14 +20,14 @@ namespace TicTacToe
 
         static SolidColorTexture White;
 
-        Vector3[] points;
+        Vector4[] points;
         float speed;
         float baseSpeed;
 
         public GameBackground(Game1 game) : base(game)
         {
             r = new Random();
-            points = new Vector3[2500];
+            points = new Vector4[1000];
             speed = 0.005f;
             baseSpeed = speed;
         }
@@ -40,7 +40,7 @@ namespace TicTacToe
 
             for (int k = 0; k < points.Length; k++)
             {
-                points[k] = new Vector3((float)r.NextDouble(), (float)r.NextDouble(), (float)r.NextDouble());
+                points[k] = new Vector4((float)r.NextDouble(), (float)r.NextDouble(), (float)r.NextDouble(), (float)r.NextDouble());
             }
 
             texture = game.Content.Load<Texture2D>("starfield1");
@@ -67,7 +67,7 @@ namespace TicTacToe
             }
             else if (speed > baseSpeed)
             {
-                speed *= 0.9f;
+                speed *= 0.95f;
             }
             else
             {
@@ -76,7 +76,7 @@ namespace TicTacToe
 
             for (int k = 0; k < points.Length; k++)
             {
-                Vector3 v = points[k];
+                Vector4 v = points[k];
                 if (v.X > 0 && v.X < 1 && v.Y > 0 && v.Y < 1)
                 {
                     v.X -= percentX;
@@ -86,11 +86,12 @@ namespace TicTacToe
                     v.Y *= 1 + speed * v.Z;
                     v.Y += percentY;
                     v.Z += speed;
+                    v.W = 1.0f;
                     points[k] = v;
                 }
                 else
                 {
-                    points[k] = new Vector3((float)r.NextDouble(), (float)r.NextDouble(), (float)(r.NextDouble() / 32));
+                    points[k] = new Vector4((float)r.NextDouble(), (float)r.NextDouble(), (float)(r.NextDouble() / 32), (float)r.NextDouble());
                 }
             }
         }
@@ -101,13 +102,13 @@ namespace TicTacToe
 
             for (int k = 0; k < points.Length; k++)
             {
-                Vector3 v = points[k];
+                Vector4 v = points[k];
                 int value = r.Next();
                 spriteBatch.Draw(White,
                     new Rectangle(
                         (int)(v.X * game.GraphicsDevice.Viewport.Bounds.Width),
                         (int)(v.Y * game.GraphicsDevice.Viewport.Bounds.Height),
-                        1, 1),
+                        (int)v.W, (int)v.W),
                     new Color((int)(255 * v.Z), (int)(255 * v.Z), (int)(255 * v.Z)));
             }
         }

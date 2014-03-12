@@ -35,7 +35,7 @@ namespace TicTacToe
             return new Rectangle(x + (int)(offsetX * scale), y + (int)(offsetY * scale), (int)(texture.Width * scale), (int)(texture.Height * scale));
         }
 
-        public void Update(MouseState lastMouse, MouseState currentMouse)
+        public override void Update(MouseState lastMouse, MouseState currentMouse)
         {
             x = currentMouse.X;
             y = currentMouse.Y;

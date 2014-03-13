@@ -28,7 +28,7 @@ namespace TicTacToe
         MouseState currentMouse;
         MouseState lastMouse;
 
-        private static readonly bool FULLSCREEN = true;
+        private static readonly bool FULLSCREEN = false;
 
         public Game1()
         {

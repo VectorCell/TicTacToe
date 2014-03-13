@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace TicTacToe
 {
-    class GameObject
+    public class GameObject
     {
         protected Game1 game;
 

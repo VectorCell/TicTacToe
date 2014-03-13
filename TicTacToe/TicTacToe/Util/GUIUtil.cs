@@ -30,11 +30,12 @@ namespace TicTacToe.Util
                 SpriteEffects.None, 0.0f);
         }
 
-        public static void DrawLine(this SpriteBatch spriteBatch, Color color, Vector2 start, Vector2 end)
+        public static void DrawLine(this SpriteBatch spriteBatch, Game1 game, Color color, Vector2 start, Vector2 end)
         {
-            spriteBatch.DrawLine(new SolidColorTexture(null, color), start, end);
+            spriteBatch.DrawLine(new SolidColorTexture(game, color), start, end);
         }
 
+        // not yet fully implemented
         public static void DrawThickLine(this SpriteBatch spriteBatch, Game1 game, Vector2 start, Vector2 end, Color color, float width)
         {
             Texture2D texture = new SolidColorTexture(game, color, 1, 1);

@@ -101,6 +101,11 @@ namespace TicTacToe
             GameGrid grid = new GameGrid(this);
             objects.AddLast(grid);
 
+            GameButton closeButton = new GameButton(this, "Close", new Rectangle(
+                this.GraphicsDevice.Viewport.Bounds.Width - 50,
+                0, 50, 50));
+            objects.AddLast(closeButton);
+
             // TODO: use this.Content to load your game content here
             GameCursor cursor = new GameCursor(this);
             objects.AddLast(cursor);
@@ -131,6 +136,15 @@ namespace TicTacToe
             currentKey = Keyboard.GetState();
             lastMouse = currentMouse;
             currentMouse = Mouse.GetState();
+
+            if (lastMouse.LeftButton == ButtonState.Released && currentMouse.LeftButton == ButtonState.Pressed)
+            {
+                int x = currentMouse.X;
+                int y = currentMouse.Y;
+                if (x >= this.GraphicsDevice.Viewport.Bounds.Width - 50)
+                    if (y < 50)
+                        this.Exit();
+            }
 
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)

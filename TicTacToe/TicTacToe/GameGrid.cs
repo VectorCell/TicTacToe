@@ -25,18 +25,16 @@ namespace TicTacToe
         private int size; // square
         private int offsetX;
 
+        private static readonly int EMPTY = TicTacToeUtil.EMPTY;
+        private static readonly int PLAYER_X = TicTacToeUtil.PLAYER_X;
+        private static readonly int PLAYER_O = TicTacToeUtil.PLAYER_O;
+        private static readonly int TIE = TicTacToeUtil.TIE;
+
         private int[,] gridState;
-        private static readonly int EMPTY = 0;
-        private static readonly int HAS_X = 1;
-        private static readonly int HAS_O = 4;
-        private bool gameWon;
-        private bool showWin;
 
         private int turn;
-        private static readonly int PLAYER_X = 0;
-        private static readonly int PLAYER_O = 1;
-        private static readonly int TIE = 2;
         private int player;
+        private int starting;
         private int winner;
 
         private bool computerPlayer;
@@ -45,14 +43,26 @@ namespace TicTacToe
         {
             White = new SolidColorTexture(game, Color.White);
 
-            gridState = new int[3,3];
-            gameWon = false;
-            showWin = false;
+            gridState = new int[3, 3];
 
-            turn = PLAYER_X;
-            player = PLAYER_X;
-            winner = -1;
+            player = TicTacToeUtil.PLAYER_X;
+            starting = TicTacToeUtil.PLAYER_X;
+            turn = starting;
+            winner = 0;
             computerPlayer = true;
+        }
+
+        public GameGrid(Game1 game, bool computerPlayer) : base(game)
+        {
+            White = new SolidColorTexture(game, Color.White);
+
+            gridState = new int[3, 3];
+
+            player = TicTacToeUtil.PLAYER_X;
+            starting = TicTacToeUtil.PLAYER_X;
+            turn = starting;
+            winner = EMPTY;
+            this.computerPlayer = computerPlayer;
         }
 
         public override void LoadContent()
@@ -121,233 +131,6 @@ namespace TicTacToe
                 && (vector.Y >= bounds.Y && vector.Y <= bounds.Y + bounds.Height);
         }
 
-        /// <summary>
-        /// Finds the given pattern in a line (either horizontally, vertically, or diagonally)
-        /// in the grid (forwards or backwards).
-        /// In the context of the GameGrid class, it's finding a pattern
-        /// </summary>
-        /// <param name="pattern"></param>
-        /// <param name="grid"></param>
-        /// <returns></returns>
-        private int[,,] FindPattern(int[] pattern, int[,] grid)
-        {
-            int[] reverse = new int[pattern.Length];
-            for (int k = 0; k < pattern.Length / 2; k++)
-                reverse[k] = pattern[(pattern.Length - 1) - k];
-
-            bool matchP = true;
-            bool matchR = true;
-
-            // list buffer of coordinates
-            LinkedList<int[]> hold = new LinkedList<int[]>();
-
-            // gets horizontal matches
-            for (int x = 0; x < 3; x++)
-            {
-                matchP = true;
-                matchR = true;
-                for (int y = 0; y < 3; y++)
-                {
-                    matchP = matchP && (grid[x,y] == pattern[y]);
-                    matchR = matchR && (grid[x,y] == reverse[y]);
-                    hold.AddLast(new int[] { x, y });
-                }
-                if (!matchP && !matchR)
-                    for (int k = 0; k < 3; k++)
-                        hold.RemoveLast();
-            }
-
-            // gets vertical matches
-            for (int y = 0; y < 3; y++)
-            {
-                matchP = true;
-                matchR = true;
-                for (int x = 0; x < 3; x++)
-                {
-                    matchP = matchP && (grid[x,y] == pattern[y]);
-                    matchR = matchR && (grid[x,y] == reverse[y]);
-                    hold.AddLast(new int[] { x, y });
-                }
-                if (!matchP && !matchR)
-                    for (int k = 0; k < 3; k++)
-                        hold.RemoveLast();
-            }
-
-            // gets diagonal matches
-            matchP = true;
-            matchR = true;
-            for (int n = 0; n < 3; n++)
-            {
-                matchP = matchP && (grid[n, n] == pattern[n]);
-                matchR = matchR && (grid[n, n] == reverse[n]);
-                hold.AddLast(new int[] { n, n });
-            }
-            if (!matchP && !matchR)
-                for (int k = 0; k < 3; k++)
-                    hold.RemoveLast();
-
-            // gets diagonal matches
-            matchP = true;
-            matchR = true;
-            for (int n = 0; n < 3; n++)
-            {
-                matchP = matchP && (grid[n, 2-n] == pattern[n]);
-                matchR = matchR && (grid[n, 2-n] == reverse[n]);
-                hold.AddLast(new int[] { n, 2-n });
-            }
-            if (!matchP && !matchR)
-                for (int k = 0; k < 3; k++)
-                    hold.RemoveLast();
-
-            int length = hold.Count;
-            int numMatches = length / 6;
-            int[, ,] matches = new int[numMatches, 3, 2];
-            for (int match = 0; match < numMatches; match++)
-            {
-                for (int coord = 0; coord < 3; coord++)
-                {
-                    int[] place = hold.First();
-                    hold.RemoveFirst();
-                    for (int n = 0; n < place.Length; n++)
-                        matches[match, coord, n] = place[n];
-                }
-            }
-            return matches;
-        }
-
-        // returns the turn index of the winning player,
-        // or -1 if there is no winner
-        private int CheckWin()
-        {
-            return CheckWin(gridState);
-        }
-
-        // returns the turn index of the winning player,
-        // or -1 if there is no winner
-        private static int CheckWin(int[,] gridState)
-        {
-            int sum;
-
-            // checks verticals
-            for (int xi = 0; xi < gridState.GetLength(0); xi++)
-            {
-                sum = 0;
-                for (int yi = 0; yi < gridState.GetLength(1); yi++)
-                {
-                    sum += gridState[xi, yi];
-                }
-                if (sum == 3 * HAS_X)
-                    return PLAYER_X;
-                if (sum == 3 * HAS_O)
-                    return PLAYER_O;
-            }
-
-            // checks horizontals
-            for (int yi = 0; yi < gridState.GetLength(1); yi++)
-            {
-                sum = 0;
-                for (int xi = 0; xi < gridState.GetLength(0); xi++)
-                {
-                    sum += gridState[xi, yi];
-                }
-                if (sum == 3 * HAS_X)
-                    return PLAYER_X;
-                if (sum == 3 * HAS_O)
-                    return PLAYER_O;
-            }
-
-            // checks diagonals
-            sum = 0;
-            for (int xi = 0; xi < gridState.GetLength(0); xi++)
-            {
-                sum += gridState[xi, xi];
-            }
-            if (sum == 3 * HAS_X)
-                return PLAYER_X;
-            if (sum == 3 * HAS_O)
-                return PLAYER_O;
-            sum = 0;
-            for (int xi = 0; xi < gridState.GetLength(0); xi++)
-            {
-                sum += gridState[xi, gridState.GetLength(1) - xi - 1];
-            }
-            if (sum == 3 * HAS_X)
-                return PLAYER_X;
-            if (sum == 3 * HAS_O)
-                return PLAYER_O;
-
-            // checks for tie
-            // only true if there is an empty space
-            return HasMovesLeft(gridState) ? -1 : TIE;
-        }
-
-        // returns the move if the given player can make a single move to set up a fork
-        // returns null if no such move exists
-        private static int[] GetFork(int player, int[,] state)
-        {
-            for (int x = 0; x < 3; x++)
-            {
-                for (int y = 0; y < 3; y++)
-                {
-                    if (state[x,y] == EMPTY)
-                    {
-                        int[,] changed = CopyState(state);
-                        changed[x, y] = (player == PLAYER_X ? HAS_X : HAS_O);
-                        if (HasFork(player, changed))
-                            return new int[] { x, y };
-                    }
-                }
-            }
-            return null;
-        }
-
-        // returns true if the given player has a fork
-        private static bool HasFork(int player, int[,] state)
-        {
-            int has = (player == PLAYER_X ? HAS_X : HAS_O);
-            int[] pattern1 = { has, has, EMPTY };
-            int[] pattern2 = { has, EMPTY, has };
-            int[] pattern3 = { EMPTY, has, has };
-
-            return false;
-        }
-
-        private static bool HasMovesLeft(int[,] state)
-        {
-            for (int x = 0; x < 3; x++)
-                for (int y = 0; y < 3; y++)
-                    if (state[x, y] == EMPTY)
-                        return true;
-            return false;
-        }
-
-        private static int[,] CopyState(int[,] state)
-        {
-            int[,] copy = new int[state.GetLength(0), state.GetLength(1)];
-            for (int x = 0; x < 3; x++)
-                for (int y = 0; y < 3; y++)
-                    copy[x, y] = state[x, y];
-            return copy;
-        }
-
-        /// <summary>
-        /// Returns the best move for the current player.
-        /// </summary>
-        /// <returns></returns>
-        private int[] BestMove()
-        {
-            // 1
-            // checks for available win for the current player
-
-            // 2
-            // checks for available win for the other player
-
-            // 3
-            // checks for opportunity for current player to fork
-
-            return null;
-        }
-
         public override void Update()
         {
             base.Update();
@@ -362,78 +145,69 @@ namespace TicTacToe
             // player's turn
             if (lastMouse.LeftButton == ButtonState.Released && currentMouse.LeftButton == ButtonState.Pressed)
             {
-                if (gameWon)
+                if (winner != EMPTY) // last game ended
                 {
-                    gameWon = false;
-                    showWin = false;
-                    for (int xi = 0; xi < 3; xi++)
-                    {
-                        for (int yi = 0; yi < 3; yi++)
-                        {
-                            gridState[xi, yi] = EMPTY;
-                        }
-                    }
-                    turn = player;
+                    // reset the game and continue
+                    for (int n = 0; n < 9; n++)
+                        gridState[n / 3, n % 3] = EMPTY;
+                    winner = EMPTY;
+                    starting = TicTacToeUtil.GetOtherPlayer(starting);
+                    turn = starting;
+                    return;
                 }
-                else
+
+                bool validClick = false;
+                for (int xi = 0; xi < 3; xi++)
                 {
-                    showWin = false;
-                    winner = -1;
-                    for (int xi = 0; xi < 3; xi++)
+                    for (int yi = 0; yi < 3; yi++)
                     {
-                        for (int yi = 0; yi < 3; yi++)
+                        int x = 2 + xi * 10;
+                        int y = 2 + yi * 10;
+                        if (InBounds(new Vector2(currentMouse.X, currentMouse.Y), TransformRect(x, y, 9, 9)))
                         {
-                            int x = 2 + xi * 10;
-                            int y = 2 + yi * 10;
-                            if (InBounds(new Vector2(currentMouse.X, currentMouse.Y), TransformRect(x, y, 9, 9)))
+                            if (gridState[xi, yi] == EMPTY)
                             {
-                                if (gridState[xi, yi] == EMPTY)
-                                {
-                                    gridState[xi, yi] = (turn == PLAYER_X ? HAS_X : HAS_O);
-                                    turn = (turn == PLAYER_X ? PLAYER_O : PLAYER_X);
-                                }
+                                gridState[xi, yi] = turn;
+                                validClick = true;
                             }
                         }
                     }
+                }
+                if (!validClick)
+                    return;
 
-                    winner = CheckWin();
-                    if (winner >= 0)
-                    {
-                        gameWon = true;
-                        showWin = true;
-                        Console.WriteLine("We have a winner: " + winner);
-                    }
+                // go to next player
+                turn = TicTacToeUtil.GetOtherPlayer(turn);
+            }
+
+            if (computerPlayer && turn == TicTacToeUtil.GetOtherPlayer(player) && !TicTacToeUtil.IsGameOver(gridState))
+            {
+                Console.WriteLine("Attemping to process computer's turn (" + TicTacToeUtil.GetPlayerName(turn) + ")");
+                int[] move = TicTacToeUtil.GetBestMove(gridState, turn);
+                if (move != null)
+                {
+                    gridState[move[0], move[1]] = turn;
+                    Console.WriteLine("Computer decided that the best move is at {" + move[0] + "," + move[1] + "}");
+                    turn = TicTacToeUtil.GetOtherPlayer(turn);
+                }
+                else
+                {
+                    Console.WriteLine("Computer has not made a move");
                 }
             }
 
-            // computer player's turn
-            if (computerPlayer && !gameWon && turn != player)
+            // check to see if the game is over
+            if (winner == EMPTY && TicTacToeUtil.IsGameOver(gridState))
             {
-                Console.WriteLine("computer's turn");
-                int[] move = BestMove();
-                bool moveMade = false;
-
-                if (move != null)
+                winner = TicTacToeUtil.GetWinner(gridState);
+                if (winner != EMPTY)
                 {
-                    if (move.Length == 2 && move[0] >= 0 && move[1] >= 0 && gridState[move[0], move[1]] == EMPTY)
-                    {
-                        gridState[move[0], move[1]] = (turn == PLAYER_X ? HAS_X : HAS_O);
-                        moveMade = true;
-                    }
-                    Console.WriteLine("Best move for player " + turn + ": " + move[0] + "," + move[1]);
-                }
-
-                if (!moveMade && HasMovesLeft(gridState))
-                    Console.WriteLine("ERROR: NO MOVE MADE BY COMPUTER");
-                else
-                    turn = player;
-
-                winner = CheckWin();
-                if (winner >= 0)
-                {
-                    gameWon = true;
-                    showWin = true;
-                    Console.WriteLine("We have a winner: " + winner);
+                    if (winner == player)
+                        Console.WriteLine("the player has won!");
+                    else if (winner == TicTacToeUtil.GetOtherPlayer(turn))
+                        Console.WriteLine("the player has lost");
+                    else if (winner == TIE)
+                        Console.WriteLine("the game was a tie");
                 }
             }
         }
@@ -457,14 +231,14 @@ namespace TicTacToe
                     Rectangle clickArea = TransformRect(x, y, 9, 9);
                     Rectangle drawArea = TransformRect(x + 1, y + 1, 7, 7);
                     // spriteBatch.Draw(White, clickArea, Color.DarkCyan);
-                    if (gridState[xi,yi] == HAS_X)
+                    if (gridState[xi,yi] == PLAYER_X)
                         spriteBatch.Draw(White, drawArea, Color.Blue * 0.5f);
-                    else if (gridState[xi,yi] == HAS_O)
+                    else if (gridState[xi,yi] == PLAYER_O)
                         spriteBatch.Draw(White, drawArea, Color.Red * 0.5f);
                 }
             }
 
-            if (showWin)
+            if (winner != EMPTY)
             {
                 if (winner != TIE)
                     spriteBatch.DrawString(font,
@@ -477,7 +251,7 @@ namespace TicTacToe
                         new Vector2(10, 10),
                         Color.White);
             }
-            else
+            else if (!computerPlayer)
             {
                 spriteBatch.DrawString(font,
                     turn == PLAYER_X ? "Blue's Turn" : "Red's Turn",

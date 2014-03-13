@@ -216,11 +216,10 @@ namespace TicTacToe
 
             if (speed > baseSpeed * 2)
             {
-                int n = (int)(speed * 500);
+                int n = (int)(speed * 200);
                 Color c = new Color(0, 0, n, n);
                 spriteBatch.Draw(new SolidColorTexture(this.game, c), drawRect, Color.Blue);
             }
-
         }
     }
 }

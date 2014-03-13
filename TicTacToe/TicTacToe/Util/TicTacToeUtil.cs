@@ -14,13 +14,13 @@ namespace TicTacToe.Util
 {
     public class TicTacToeUtil
     {
-        private static readonly Random r = new Random();
+        private static readonly Random r = Util.RAND;
 
         // DEFINED CONSTANTS
         public const int EMPTY = 0;
         public const int PLAYER_X = 1;
-        public const int PLAYER_O = 4;
-        public const int TIE = 16;
+        public const int PLAYER_O = 2;
+        public const int TIE = 3;
 
         /// <summary>
         /// Returns the best move that a given player can make, given the current state of the game.
@@ -31,20 +31,7 @@ namespace TicTacToe.Util
         /// <returns></returns>
         public static int[] GetBestMove(int[,] state, int player)
         {
-            //Console.WriteLine("called GetBestMove");
-            //Console.Write("    int[,] state = {{");
-            //for (int x = 0; x < 3; x++)
-            //{
-            //    for (int y = 0; y < 3; y++)
-            //        Console.Write(GetPlayerName(state[x, y]) + (y < 2 ? " " : ""));
-            //    if (x < 2)
-            //        Console.Write("}\n                    {");
-            //    else
-            //        Console.WriteLine("}}");
-            //}
-            //Console.WriteLine("    player = " + GetPlayerName(player));
-
-            Console.WriteLine("Checking to see if there are available moves...");
+            // Console.WriteLine("Checking to see if there are available moves...");
             bool stillRoom = false;
             for (int x = 0; x < 3; x++)
                 for (int y = 0; y < 3; y++)
@@ -52,7 +39,7 @@ namespace TicTacToe.Util
             if (!stillRoom)
                 return null;
 
-            Console.WriteLine("Checking to see if the game is already won...");
+            // Console.WriteLine("Checking to see if the game is already won...");
             if (IsWin(state, PLAYER_X) || IsWin(state, PLAYER_O))
                 return null;
 
@@ -61,28 +48,28 @@ namespace TicTacToe.Util
 
             // 1
             // if player can win, win
-            Console.WriteLine("1. Checking to see if " + GetPlayerName(player) + " can win...");
+            // Console.WriteLine("1. Checking to see if " + GetPlayerName(player) + " can win...");
             move = CanWin(state, player);
             if (move != null)
                 return move;
 
             // 2
             // if opponent can win, block
-            Console.WriteLine("2. Checking to see if " + GetPlayerName(GetOtherPlayer(player)) + " can win...");
+            // Console.WriteLine("2. Checking to see if " + GetPlayerName(GetOtherPlayer(player)) + " can win...");
             move = CanWin(state, GetOtherPlayer(player));
             if (move != null)
                 return move;
 
             // 3
             // if player can fork, fork
-            Console.WriteLine("3. Checking to see if " + GetPlayerName(player) + " can fork");
+            // Console.WriteLine("3. Checking to see if " + GetPlayerName(player) + " can fork");
             moves = GetFork(state, player);
             if (moves != null)
                 return moves.First.Value;
 
             // 4
             // if opponent can fork, block
-            Console.WriteLine("4. Checking to see if " + GetPlayerName(GetOtherPlayer(player)) + " can fork");
+            // Console.WriteLine("4. Checking to see if " + GetPlayerName(GetOtherPlayer(player)) + " can fork");
             moves = GetFork(state, player == PLAYER_X ? PLAYER_O : PLAYER_X);
             if (moves != null)
             {
@@ -109,13 +96,13 @@ namespace TicTacToe.Util
 
             // 5
             // if center is available, go center
-            Console.WriteLine("5. Checking to see if the center is available");
+            // Console.WriteLine("5. Checking to see if the center is available");
             if (state[1, 1] == EMPTY)
                 return new int[] { 1, 1 };
 
             // 6
             // if corner is available, go corner
-            Console.WriteLine("6. Checking to see if a corner is available");
+            // Console.WriteLine("6. Checking to see if a corner is available");
             if (state[0, 0] == EMPTY)
                 return new int[] { 0, 0 };
             if (state[0, 2] == EMPTY)
@@ -127,7 +114,7 @@ namespace TicTacToe.Util
 
             // 7
             // go anywhere else (edge)
-            Console.WriteLine("Checking to see if an edge is available");
+            // Console.WriteLine("Checking to see if an edge is available");
             if (state[0, 1] == EMPTY)
                 return new int[] { 0, 1 };
             if (state[1, 0] == EMPTY)
@@ -177,7 +164,6 @@ namespace TicTacToe.Util
             int[] pattern = new int[3];
             for (int k = 0; k < 3; k++)
                 pattern[k] = player;
-            // return FindPattern(pattern, state) != null;
             return FindPattern(pattern, state).Count >= 1;
         }
 
@@ -344,11 +330,6 @@ namespace TicTacToe.Util
                 for (int y = 0; y < state.GetLength(1); y++)
                     copy[x, y] = state[x, y];
             return copy;
-        }
-
-        public static void Test()
-        {
-            Console.WriteLine("Testing...");
         }
     }
 }

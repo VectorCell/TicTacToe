@@ -16,7 +16,7 @@ namespace TicTacToe
 {
     class GameBackground : GameObject
     {
-        static Random r;
+        private static Random r = Util.Util.RAND;
 
         static SolidColorTexture White;
 
@@ -26,7 +26,6 @@ namespace TicTacToe
 
         public GameBackground(Game1 game) : base(game)
         {
-            r = new Random();
             points = new Vector4[1000];
             speed = 0.005f;
             baseSpeed = speed;

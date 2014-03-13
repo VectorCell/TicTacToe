@@ -41,7 +41,7 @@ namespace TicTacToe
                 graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
                 graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
                 graphics.IsFullScreen = true;
-                this.IsMouseVisible = true;
+                this.IsMouseVisible = false;
                 this.Window.AllowUserResizing = false;
             }
             else
